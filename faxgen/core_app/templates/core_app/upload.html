@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+        New Fax
+{% endblock title %}
+
+
+
+{% block data %}
+
+<form action="" method="post" enctype="multipart/form-data">
+
+    <div class="container rounded-5 bg-success-subtle p-2">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <p class="mb-5" style="font-family:'Dancing Script'; font-weight: 900; font-size:50px;">OFP Upload:</p>
+            {% csrf_token %}
+            {{ form.as_p }}
+    <input class="btn btn-warning mt-3 mb-3" type="submit" value="Accept">
+            </div>
+</form>
+
+{% endblock data %}
+    
+

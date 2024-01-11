@@ -15,6 +15,10 @@ class UserForm(forms.ModelForm):
             # 'password2': forms.PasswordInput(attrs={'class':'form-control'}),
 
         }
+        help_texts={
+            'username':None
+        }
+        
     # def clean(self):
     #     cleaned_data=super().clean()
     #     cpass=cleaned_data.get('password')
