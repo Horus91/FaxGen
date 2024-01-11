@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Register
+{% endblock title %}
+    
+
+{% block data %}
+    
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="container text-light">
+        <div class="col-4">
+    {{ uform }}
+    {{ pform }}
+</div>
+
+    <input class="btn btn-outline-warning mt-3" type="submit" value="Register">
+</div>
+</form>
+
+{% endblock data %}
+    

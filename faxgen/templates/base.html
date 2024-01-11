@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- <link rel="stylesheet" href="{% static 'css/main.css' %}"> -->
+    <title>
+    FaxGen: {% block title %}      
+    {% endblock title %}
+        </title>
+</head>
+<body style="background-color: rgb(8, 49, 7);">
+    <nav class="navbar navbar-expand-md" style="background-color: #D4AF37;">
+        <div class="container">
+            <a href="{% url 'login_app:login' %}" class="navbar-brand">FaxGen</a>
+            <button class="navbar-toggler navbar-toggler-icon" data-bs-toggle="collapse" data-bs-target="#navcollapse" aria-controls="navcollapse" aria-label="expand navigation"></button>
+            <div class="collapse navbar-collapse"  id="navcollapse">
+                <ul class="navbar-nav ms-3 ps-3  gap-2">
+                    <li class="nav-item"><i class="bi bi-patch-plus-fill"></i><a class="nav-link d-inline ms-1" href="">New Fax</a></li>
+                    <li class="nav-item"><i class="bi bi-archive-fill"></i><a class="nav-link d-inline ms-1" href="">History</a></li>
+                </ul>
+                
+                {% if user.is_authenticated %}
+                <div class="navbar-collapse justify-content-end ms-3 ps-3 mt-1 " id="navbarResponsive"><a class="btn btn-success" href="{% url 'login_app:logout' %}"><i class="bi bi-person-circle"> Logout</i></a></div>
+                {% else %}
+                <div class="navbar-collapse justify-content-end ms-3 ps-3 mt-1 " id="navbarResponsive"><a class="btn btn-success" href="{% url 'login_app:login' %}"><i class="bi bi-person-circle"> Login</i></a><a class="btn btn-success ms-1" href="{% url 'login_app:register' %}"><i class="bi bi-person-plus-fill"> Register</i></a></div>
+                {% endif %}
+                    
+                
+
+                </div>
+            </div>
+    </nav>
+    
+
+      <div class="container mt-5">
+        {% block data %}
+        
+    {% endblock data %}
+
+</div>
+        
+</body>
+</html>
