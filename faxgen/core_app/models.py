@@ -8,7 +8,6 @@ class OperationalFPL(models.Model):
     'OX':'OX',
     'ForeFlight':'ForeFlight',
     }
-
     ofp_format=models.CharField(max_length=10,choices=OFP_FORMAT)
     ofp=models.FileField(upload_to='ofps/',blank=True)
 
