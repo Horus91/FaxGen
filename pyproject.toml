@@ -9,6 +9,8 @@ readme = "README.md"
 python = "^3.10"
 django = {extras = ["argon2"], version = "^5.0.1"}
 bcrypt = "^4.1.2"
+pypdf = "^3.17.4"
+python-docx = "^1.1.0"
 
 
 [build-system]
