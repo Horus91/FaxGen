@@ -11,8 +11,8 @@ class Fax_eltsForm(forms.ModelForm):
         model = Fax_elts
         exclude=['generated','generated_file']
         widgets = {
-            'captain':forms.TextInput(attrs={'class':'form-control'}),
+            'captain':forms.TextInput(attrs={'class':'form-control', 'placeholder':'x'}),
             'aircraft':forms.Select(attrs={'class':'form-select'}),
-            'fir_countries':forms.Textarea(attrs={'class':'form-control'}),
-            'fir_points':forms.Textarea(attrs={'class':'form-control'}),
+            'fir_countries':forms.Textarea(attrs={'class':'form-control',"placeholder":'Separated by comma ","' ,"style":"height: 100px;"}),
+            'fir_points':forms.Textarea(attrs={'class':'form-control',"placeholder":'Separated by comma ","' , "style":"height: 100px;"}),
         }

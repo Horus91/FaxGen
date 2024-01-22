@@ -10,15 +10,23 @@
 {% block data %}
 
 <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
 
-    <div class="container rounded-5 bg-success-subtle p-2">
+    <div class="container rounded-5 bg-success-subtle p-5 ">
         <div class="d-flex flex-column justify-content-center align-items-center">
-            <p class="mb-5" style="font-family:'Dancing Script'; font-weight: 900; font-size:50px;">OFP Upload:</p>
-            {% csrf_token %}
-            {{ com_form.as_p }}
-            {{ form.as_p }}
+            <p class="mb-5 text-center" style="font-family:'Dancing Script'; font-weight: 900; font-size:50px;">OFP Upload:</p>
+            <div class="input-group input-group-sm ">       
+            <div class="form-floating">{{ com_form.captain }}{{ com_form.captain.label_tag }}</div>              
+            <span class="input-group-text">{{ com_form.aircraft.label_tag }}</span>{{ com_form.aircraft }}</div>            
+              <!-- <div class="row"> -->
+                <div class="input-group input-group-sm">
+                        <span class="input-group-text">{{ com_form.fir_countries.label_tag }}</span>{{ com_form.fir_countries }}
+                        <span class="input-group-text">{{ com_form.fir_points.label_tag }}</span>{{ com_form.fir_points }}</div>
+                           
+            {{ form }}
     <input class="btn btn-warning mt-3 mb-3" type="submit" value="Accept">
             </div>
+        </div>
 </form>
 
 {% endblock data %}

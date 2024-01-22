@@ -9,33 +9,33 @@ from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-def register_view(request):
+# def register_view(request):
 
-    if request.method == 'POST':
-        uform=UserForm(data=request.POST)
-        pform=UserInfoForm(data=request.POST)
-        if uform.is_valid() and pform.is_valid():
-            user=uform.save()
-            user.set_password(user.password) #HASHING PASSWORD
-            # user.set_password(make_password(user.password2))
-            user.save()
+#     if request.method == 'POST':
+#         uform=UserForm(data=request.POST)
+#         pform=UserInfoForm(data=request.POST)
+#         if uform.is_valid() and pform.is_valid():
+#             user=uform.save()
+#             user.set_password(user.password) #HASHING PASSWORD
+#             # user.set_password(make_password(user.password2))
+#             user.save()
 
-            profil=pform.save(commit=False)
-            profil.user=user
+#             profil=pform.save(commit=False)
+#             profil.user=user
 
-            profil.save()
+#             profil.save()
 
-            return HttpResponseRedirect(reverse('login'))
-            # return HttpResponse('<h1>IN</h1>')
+#             return HttpResponseRedirect(reverse('login'))
+#             # return HttpResponse('<h1>IN</h1>')
 
-        else:
-             print(UserForm.errors,UserInfoForm.errors)
+#         else:
+#              print(UserForm.errors,UserInfoForm.errors)
 
-    else:
-        uform=UserForm()
-        pform=UserInfoForm()
-    return render(request,'login_app/register.html',{'uform':uform,
-                                                     'pform':pform})
+#     else:
+#         uform=UserForm()
+#         pform=UserInfoForm()
+#     return render(request,'login_app/register.html',{'uform':uform,
+#                                                      'pform':pform})
 
 def login_view(request):
     if request.method == 'POST':
@@ -45,11 +45,11 @@ def login_view(request):
         if myuser:
             if myuser.is_active:
                 login(request,myuser)
-                return HttpResponseRedirect(reverse('login_app:photo'))
+                return HttpResponseRedirect(reverse('login_app:login'))
             else:
                 return HttpResponse('<h1>NOT ACTIVE</h1>')
         else:
-            return HttpResponseRedirect(reverse('login_app:register'))
+            return HttpResponseRedirect(reverse('login_app:login'))
 
     else:
         return render(request,'login_app/login.html',{})

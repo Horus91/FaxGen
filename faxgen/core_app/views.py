@@ -2,7 +2,8 @@ import os
 from django.shortcuts import render
 from .forms import OperationalFPLForm,Fax_eltsForm
 from .models import OperationalFPL
-from django.http import HttpResponseRedirect
+from .models import Fax_elts as FaxesModel
+from django.http import FileResponse, HttpResponseRedirect
 from django.urls import reverse
 
 from django.contrib.auth.decorators import login_required
@@ -38,3 +39,12 @@ def fileUpload(request):
         form=OperationalFPLForm()
         return render(request,'core_app/upload.html',{'com_form':com_form 
                                                       ,'form':form})
+@login_required
+def history_view(request):
+    ofps=FaxesModel.objects.all()
+    return render(request,"core_app/history.html",{"faxes":ofps})
+
+@login_required
+def download_view(request,id):
+    fax=OperationalFPL.objects.get(pk=id)
+    return FileResponse(open(fax.ofp.path,'rb'))

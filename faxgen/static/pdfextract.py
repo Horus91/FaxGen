@@ -2,6 +2,7 @@ from pypdf import PdfReader
 from pathlib import Path
 from datetime import datetime,timedelta
 from docx import Document
+import re
 
 OFPS_DIR= Path(__file__).resolve().parent.parent.joinpath('media').joinpath('ofps')
 FXTEMP= Path(__file__).resolve().parent.parent.joinpath('static').joinpath('fxtemp.docx')
@@ -24,6 +25,7 @@ class Fax_elts():
 
 
     def general_infos(self):
+        """Extracts Registration as 0, callsign as 1,origin as 2,destination as 3,alt1 as 4,alt2 as 5"""
         reg_marks=self.first[655:660]
         callsign=self.garde[14:21]
         origin=self.first[759:786]
@@ -40,12 +42,15 @@ class Fax_elts():
                 firs_lst=[]
                 firs_timing=[]
                 for fir in firs:
-                    firs_lst.append(fir[:4])
-                    firs_timing.append(fir[4:8])
+                    if len(fir)<10:
+                        firs_lst.append(fir[:4])
+                        firs_timing.append(fir[4:8])
+                    else:
+                        continue
                 global last_log_page
                 last_log_page=page.page_number
 
-                return firs_lst,firs_timing
+                return firs_lst,firs_timing,firs
         
     def route_extraction(self):
         for page in self.pages:
@@ -124,8 +129,11 @@ class Fax_docx():
 
         
         
-# b=Fax_docx(Fax_elts(OFPS_DIR.joinpath('FlightPlan_K5461.pdf')))
+# b=Fax_docx(Fax_elts(OFPS_DIR.joinpath('FlightPlan_S4522.pdf')))
+# b=Fax_elts(OFPS_DIR.joinpath('FlightPlan_S4522.pdf'))
 # b.generate_fax()
+
+# print(b.firs_extraction())
     
 
 

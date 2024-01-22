@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    History
+{% endblock title %}
+    
+
+{% block data %}
+<div class="container rounded-5 bg-success-subtle p-2">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <p class="mb-5" style="font-family:'Dancing Script'; font-weight: 900; font-size:50px;">Download Faxes:</p> </div>
+{% if user.is_authenticated %}
+<form action="" method="post">
+    {% csrf_token %}
+<div class="container p-2 ">
+<ul class="list-group ">
+{% for elt in faxes %}
+<li class="list-group-item" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+{{ elt }} <a class="btn btn-sm btn-outline-warning  " href="{% url 'core_app:download' elt.generated_file.id %}">Download</a>
+</li>
+
+{% endfor %}
+</ul>
+</form>
+{% else %}
+    <h1>Please login</h1>
+{% endif %}
+</div>
+    </div>
+    
+{% endblock data %}
+    

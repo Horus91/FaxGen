@@ -24,13 +24,15 @@
             <div class="collapse navbar-collapse"  id="navcollapse">
                 <ul class="navbar-nav ms-3 ps-3  gap-2">
                     <li class="nav-item"><i class="bi bi-patch-plus-fill"></i><a class="nav-link d-inline ms-1" href="{% url 'core_app:upload' %}">New Fax</a></li>
-                    <li class="nav-item"><i class="bi bi-archive-fill"></i><a class="nav-link d-inline ms-1" href="">History</a></li>
+                    <li class="nav-item"><i class="bi bi-archive-fill"></i><a class="nav-link d-inline ms-1" href="{% url 'core_app:history' %}">History</a></li>
                 </ul>
                 
                 {% if user.is_authenticated %}
                 <div class="navbar-collapse justify-content-end ms-3 ps-3 mt-1 " id="navbarResponsive"><a class="btn btn-success" href="{% url 'login_app:logout' %}"><i class="bi bi-person-circle"> Logout</i></a></div>
                 {% else %}
-                <div class="navbar-collapse justify-content-end ms-3 ps-3 mt-1 " id="navbarResponsive"><a class="btn btn-success" href="{% url 'login_app:login' %}"><i class="bi bi-person-circle"> Login</i></a><a class="btn btn-success ms-1" href="{% url 'login_app:register' %}"><i class="bi bi-person-plus-fill"> Register</i></a></div>
+                <div class="navbar-collapse justify-content-end ms-3 ps-3 mt-1 " id="navbarResponsive"><a class="btn btn-success" href="{% url 'login_app:login' %}"><i class="bi bi-person-circle"> Login</i></a>
+                    <!-- <a class="btn btn-success ms-1" href=""><i class="bi bi-person-plus-fill"> Register</i></a> -->
+                </div>
                 {% endif %}
                     
                 
