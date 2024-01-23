@@ -31,7 +31,7 @@ def fileUpload(request):
                     ofp_elts.save()
                     f.close()
                     os.remove(path)
-                    return HttpResponseRedirect(reverse('login_app:login'))
+                    return HttpResponseRedirect(reverse('login_app:history'))
         else:
             print(form.errors)
     else:
