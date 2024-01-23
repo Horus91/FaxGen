@@ -26,9 +26,9 @@ MEDIA_DIR = os.path.join(BASE_DIR,'media')
 SECRET_KEY = 'django-insecure-wci3)%(-gk**^_#au2eq)12=b_gaiylqu+_cl%w3ylisauyb57'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['horus91.pythonanywhere.com']
+ALLOWED_HOSTS = ['horus91.pythonanywhere.com','127.0.0.1']
 
 
 # Application definition
