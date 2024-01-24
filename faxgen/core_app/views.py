@@ -41,7 +41,7 @@ def fileUpload(request):
                                                       ,'form':form})
 @login_required
 def history_view(request):
-    ofps=FaxesModel.objects.all()
+    ofps=FaxesModel.objects.order_by('-generated')
     return render(request,"core_app/history.html",{"faxes":ofps})
 
 @login_required

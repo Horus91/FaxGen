@@ -14,10 +14,10 @@
 <form action="" method="post">
     {% csrf_token %}
 <div class="container p-2 ">
-<ul class="list-group ">
+<ul class="list-group">
 {% for elt in faxes %}
-<li class="list-group-item" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
-{{ elt }} <a class="btn btn-sm btn-outline-warning  " href="{% url 'core_app:download' elt.generated_file.id %}">Download</a>
+<li class="list-group-item d-flex justify-content-between align-items-start">
+<i class="bi bi-file-earmark"> {{ elt.generated_file }}</i><div class="justify-content-end "><span class="badge bg-dark">Generated: {{ elt.generated|date:"H:i dMY" }}</span><a class="btn btn-sm btn-warning ms-2 " href="{% url 'core_app:download' elt.generated_file.id %}"><i class="bi bi-download"></i></a></div>
 </li>
 
 {% endfor %}

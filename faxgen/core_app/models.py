@@ -37,3 +37,5 @@ class Fax_elts(models.Model):
 
     def __str__(self):
         return f"{self.generated_file} | {self.generated}"
+    
+    
